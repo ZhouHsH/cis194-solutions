@@ -26,8 +26,7 @@ hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
 hanoi4 n src goal tmp1 tmp2
   | n <= 0    = []
   | n == 1    = [(src, goal)]
-  {-| n == 2    = [(src, tmp1), (src, goal), (tmp1, goal)]-}
+  | n == 2    = [(src, tmp1), (src, goal), (tmp1, goal)]
   | n == 3    = [(src, tmp1), (src, tmp2), (src, goal), (tmp2, goal), (tmp1, goal)]
   | otherwise = hanoi4 (n-1) src tmp1 goal tmp2 ++ hanoi4 1 src goal tmp1 tmp2
                 ++ hanoi4 (n-1) tmp1 goal src tmp2
-
